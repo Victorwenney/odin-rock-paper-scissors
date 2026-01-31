@@ -11,3 +11,17 @@ function getComputerChoice(){
 }
 
 console.log(getComputerChoice());
+
+function getHumanChoice(){
+    let humanChoice = + prompt("Please enter the number for what you want to play:\n1 - Rock\n2 - Paper\n3 - Scissors");
+    console.log(humanChoice);
+    if(humanChoice === 1){  
+        return "Rock";
+    } else if(humanChoice === 2){
+        return "Paper";
+    } else{
+        return "Scissors";
+    }
+}
+
+console.log(getHumanChoice());
