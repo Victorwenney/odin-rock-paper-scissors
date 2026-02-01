@@ -1,4 +1,3 @@
-
 function getComputerChoice(){
     let compChoice = Math.trunc((Math.random() * 100)) % 3;
     if(compChoice === 0){
@@ -15,9 +14,6 @@ function getHumanChoice(){
     hChoice = hChoice.toUpperCase();
     return hChoice;
 }
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice === "ROCK" && computerChoice === "SCISSORS"){
@@ -44,18 +40,26 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-let result = 0;
-result = playRound(getHumanChoice(), getComputerChoice());
-switch (result){
-    case 1:
-        humanScore += 1;
-        break;
-    case 2:
-        computerScore += 1;
-        break;
-    default:
-        break;
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let result = 0;
+    for (let i = 0; i < 5; i++){
+        result = playRound(getHumanChoice(), getComputerChoice());
+        switch (result){
+            case 1:
+                humanScore += 1;
+            break;
+        case 2:
+            computerScore += 1;
+            break;
+        default:
+            break;
+        }
+        console.log("Total score:\nUser: " + humanScore +"\nComputer: " + computerScore);
+    }
 }
-console.log("Total score:\nUser: " + humanScore +"\nComputer: " + computerScore);
+
+playGame();
 
 
