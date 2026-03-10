@@ -9,38 +9,32 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let hChoice = prompt("Welcome to Rock-Paper-Scissors!\nWhat do you want to play?");
-    hChoice = hChoice.toUpperCase();
-    return hChoice;
-}
-
 function playRound(humanChoice, computerChoice){
     if(humanChoice === "ROCK" && computerChoice === "SCISSORS"){
-        console.log("You win! " + humanChoice + " beats " + computerChoice +".");
+        resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
         return 1;
     } else if(humanChoice === "PAPER" && computerChoice === "ROCK"){
-        console.log("You win! " + humanChoice + " beats " + computerChoice +".");
+        resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
         return 1;
     } else if(humanChoice === "SCISSORS" && computerChoice === "PAPER"){
-        console.log("You win! " + humanChoice + " beats " + computerChoice +".");
+        resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
         return 1;
     } else if(computerChoice === "ROCK" && humanChoice === "SCISSORS"){
-        console.log("You lose! " + computerChoice + " beats " + humanChoice +".");
+        resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
         return 2;
     } else if(computerChoice === "PAPER" && humanChoice === "ROCK"){
-        console.log("You lose! " + computerChoice + " beats " + humanChoice +".");
+        resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
         return 2;
     } else if(computerChoice === "SCISSORS" && humanChoice === "PAPER"){
-        console.log("You lose! " + computerChoice + " beats " + humanChoice +".");
+        resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
         return 2;
     } else{
-        console.log("It's a draw! Both players played " + humanChoice +".");
+        resultSpace.textContent = "It's a draw! Both players played " + humanChoice +".";
         return 3;
     }
 }
 
-/*function playGame(){
+/*
     let humanScore = 0;
     let computerScore = 0;
     let result = 0;
@@ -58,9 +52,6 @@ function playRound(humanChoice, computerChoice){
         }
         console.log("Total score:\nUser: " + humanScore +"\nComputer: " + computerScore);
     }
-}
-
-playGame();
 */
 
 const btnRock = document.createElement('button');
@@ -79,4 +70,5 @@ document.body.appendChild(btnRock);
 document.body.appendChild(btnPaper);
 document.body.appendChild(btnScissors);
 
-
+const resultSpace = document.createElement('div');
+document.body.appendChild(resultSpace);
