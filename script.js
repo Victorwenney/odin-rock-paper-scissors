@@ -9,50 +9,59 @@ function getComputerChoice(){
     }
 }
 
+let humanScore = 0;
+let computerScore = 0;
+let round = 0;
+
 function playRound(humanChoice, computerChoice){
     if(humanChoice === "ROCK" && computerChoice === "SCISSORS"){
+        humanScore += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
+        round += 1;
         resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
-        return 1;
     } else if(humanChoice === "PAPER" && computerChoice === "ROCK"){
         resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
-        return 1;
+        humanScore += 1;
+        round += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
     } else if(humanChoice === "SCISSORS" && computerChoice === "PAPER"){
         resultSpace.textContent = "You win! " + humanChoice + " beats " + computerChoice +".";
-        return 1;
+        humanScore += 1;
+        round += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
     } else if(computerChoice === "ROCK" && humanChoice === "SCISSORS"){
         resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
-        return 2;
+        computerScore += 1;
+        round += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
     } else if(computerChoice === "PAPER" && humanChoice === "ROCK"){
         resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
-        return 2;
+        computerScore += 1;
+        round += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
     } else if(computerChoice === "SCISSORS" && humanChoice === "PAPER"){
         resultSpace.textContent = "You lose! " + computerChoice + " beats " + humanChoice +".";
-        return 2;
+        computerScore += 1;
+        round += 1;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
     } else{
+        round += 1;
         resultSpace.textContent = "It's a draw! Both players played " + humanChoice +".";
-        return 3;
+        runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
+    }
+    if(round === 5){
+        document.body.removeChild(btnRock);
+        document.body.removeChild(btnPaper);
+        document.body.removeChild(btnScissors);
+        if(humanScore > computerScore){
+            resultSpace.textContent = "The User WON!"
+        } else if(computerScore > humanScore){
+            resultSpace.textContent = "The Computer WON!"
+        } else{
+            resultSpace.textContent = "It was a DRAW!"
+        } 
     }
 }
-
-/*
-    let humanScore = 0;
-    let computerScore = 0;
-    let result = 0;
-    for (let i = 0; i < 5; i++){
-        result = playRound(getHumanChoice(), getComputerChoice());
-        switch (result){
-            case 1:
-                humanScore += 1;
-                break;
-            case 2:
-                computerScore += 1;
-                break;
-            default:
-                break;
-        }
-        console.log("Total score:\nUser: " + humanScore +"\nComputer: " + computerScore);
-    }
-*/
 
 const btnRock = document.createElement('button');
 btnRock.textContent = 'Rock';
@@ -72,3 +81,10 @@ document.body.appendChild(btnScissors);
 
 const resultSpace = document.createElement('div');
 document.body.appendChild(resultSpace);
+
+const runningScore = document.createElement('div');
+runningScore.textContent = "User: " + humanScore +" Computer: " + computerScore;
+document.body.appendChild(runningScore);
+
+
+
