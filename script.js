@@ -40,7 +40,7 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function playGame(){
+/*function playGame(){
     let humanScore = 0;
     let computerScore = 0;
     let result = 0;
@@ -49,17 +49,34 @@ function playGame(){
         switch (result){
             case 1:
                 humanScore += 1;
-            break;
-        case 2:
-            computerScore += 1;
-            break;
-        default:
-            break;
+                break;
+            case 2:
+                computerScore += 1;
+                break;
+            default:
+                break;
         }
         console.log("Total score:\nUser: " + humanScore +"\nComputer: " + computerScore);
     }
 }
 
 playGame();
+*/
+
+const btnRock = document.createElement('button');
+btnRock.textContent = 'Rock';
+btnRock.addEventListener("click", () => playRound("ROCK", getComputerChoice()));
+
+const btnPaper = document.createElement('button');
+btnPaper.textContent = 'Paper';
+btnPaper.addEventListener("click", () => playRound("PAPER", getComputerChoice()));
+
+const btnScissors = document.createElement('button');
+btnScissors.textContent = 'Scissors';
+btnScissors.addEventListener("click", () => playRound("SCISSORS", getComputerChoice()));
+
+document.body.appendChild(btnRock);
+document.body.appendChild(btnPaper);
+document.body.appendChild(btnScissors);
 
 
